@@ -8,25 +8,24 @@ import compress from "@playform/compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://landingpad.cosmicthemes.com/",
-  output: "hybrid",
-  adapter: netlify({
-    imageCDN: false,
-  }),
-  redirects: {
-    "/admin": "/keystatic",
-  },
-  integrations: [
-    react(),
-    keystatic(),
-    tailwind(),
-    sitemap(),
-    compress({
-      HTML: true,
-      JavaScript: true,
-      CSS: true,
-      Image: false, // astro:assets handles this. Enabling this can dramatically increase build times
-      SVG: false, // astro-icon handles this
-    }),
-  ],
+	site: "https://landingpad.cosmicthemes.com/",
+	adapter: netlify({
+		imageCDN: false,
+	}),
+	redirects: {
+		"/admin": "/keystatic",
+	},
+	integrations: [
+		react(),
+		keystatic(),
+		tailwind(),
+		sitemap(),
+		compress({
+			HTML: true,
+			JavaScript: true,
+			CSS: true,
+			Image: false, // astro:assets handles this. Enabling this can dramatically increase build times
+			SVG: false, // astro-icon handles this
+		}),
+	],
 });
