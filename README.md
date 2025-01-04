@@ -10,7 +10,7 @@ This is a free theme for Astro created by [Cosmic Themes](https://cosmicthemes.c
 2. Install all necessary packages with `npm install`
 3. Run `npm run dev` to start the dev server
    - By default, it will be available at `localhost:4321`
-4. Edit the content either with Keystatic CMS at `localhost:4321/admin` or by editing the markdown files in `src/content/`
+4. Edit the content either with Keystatic CMS at `localhost:4321/admin` or by editing the markdown files in `src/data/`
    - There's also an "Admin Dashboard" button you'll see in the demo that will take you to the CMS editor
 5. Update the colors if desired in `tailwind.config.cjs`, or any other code to adjust the looks
 6. Update the site URL in `astro.config.mjs` and `/public/robots.txt` to match your domain
