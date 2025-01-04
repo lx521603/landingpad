@@ -16,5 +16,17 @@ export default defineConfig({
   redirects: {
     "/admin": "/keystatic",
   },
-  integrations: [react(), keystatic(), tailwind(), sitemap(), compress()],
+  integrations: [
+    react(),
+    keystatic(),
+    tailwind(),
+    sitemap(),
+    compress({
+      HTML: true,
+      JavaScript: true,
+      CSS: true,
+      Image: false, // astro:assets handles this. Enabling this can dramatically increase build times
+      SVG: false, // astro-icon handles this
+    }),
+  ],
 });
