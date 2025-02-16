@@ -1,8 +1,9 @@
 import { defineConfig } from "astro/config";
+
+import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import keystatic from "@keystatic/astro";
 import netlify from "@astrojs/netlify";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import compress from "@playform/compress";
 
@@ -18,7 +19,6 @@ export default defineConfig({
 	integrations: [
 		react(),
 		keystatic(),
-		tailwind(),
 		sitemap(),
 		compress({
 			HTML: true,
@@ -28,4 +28,12 @@ export default defineConfig({
 			SVG: false, // astro-icon handles this
 		}),
 	],
+
+	vite: {
+		plugins: [tailwindcss()],
+		// stop inlining short scripts to fix issues with ClientRouter: https://github.com/withastro/astro/issues/12804
+		build: {
+			assetsInlineLimit: 0,
+		},
+	},
 });
