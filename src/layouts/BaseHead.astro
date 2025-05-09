@@ -1,9 +1,6 @@
 ---
-import { type CollectionEntry } from "astro:content";
-import { ClientRouter } from "astro:transitions";
-
-// component imports
 import Seo from "@components/Seo/Seo.astro";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
 	title: string;
@@ -16,7 +13,7 @@ const { title, description, image, noindex = false } = Astro.props as Props;
 ---
 
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+<meta name="viewport" content="width=device-width" initial-scale="1.0" />
 
 <!-- Satoshi font example: https://www.fontshare.com/fonts/satoshi -->
 <!-- <link rel="preconnect" href="https://api.fontshare.com" />

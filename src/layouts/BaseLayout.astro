@@ -1,11 +1,8 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-
-// component imports
-import BaseHead from "@layouts/BaseHead.astro";
-
-// style import
 import "@/styles/global.css";
+
+import BaseHead from "@layouts/BaseHead.astro";
+import { getCollection } from "astro:content";
 
 const bio = await getCollection("bio");
 const profile = bio[0];

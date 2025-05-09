@@ -21,7 +21,8 @@ This is a free theme for Astro created by [Cosmic Themes](https://cosmicthemes.c
 - A production-ready landing page inspired by linktree, made to be hosted as a static site
 - Optional Keystatic CMS integration for editing content
 - Built-in image optimiation using `astro:assets`
-- Tailwind CSS for styling
+- Tailwind CSS v4 for styling
+- Prettier and ESLint pre-configured
 
 ## Other Resources
 

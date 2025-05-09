@@ -1,5 +1,5 @@
-import { z, defineCollection } from "astro:content";
-import { glob, file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
+import { defineCollection, z } from "astro:content";
 
 const bioCollection = defineCollection({
 	loader: glob({ pattern: "**/[^_]*{md,mdx}", base: "./src/data/bio" }),
