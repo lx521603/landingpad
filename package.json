@@ -8,7 +8,8 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"format": "prettier -w \"**/*\" --ignore-unknown --cache"
+		"format": "eslint . --fix && prettier -w \"**/*\" --ignore-unknown --cache",
+		"lint": "eslint ."
 	},
 	"dependencies": {
 		"@astrojs/netlify": "6.3.2",

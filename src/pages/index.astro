@@ -1,13 +1,9 @@
 ---
-import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
-
-// layout
-import BaseLayout from "@layouts/BaseLayout.astro";
-
-// components
-import Socials from "@components/Socials/Socials.astro";
 import Links from "@components/Links/Links.astro";
+import Socials from "@components/Socials/Socials.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
 
 const bio = await getCollection("bio");
 
