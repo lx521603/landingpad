@@ -6,24 +6,23 @@ import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 
 const bio = await getCollection("bio");
-
 const profile = bio[0];
 const { name, avatar, background, blur } = profile.data;
 const { Content } = await render(profile);
 ---
 
 <BaseLayout
-	title={`${name}'s links and socials`}
-	description={`Fantastic projects from ${name}, and their social links for you to follow.'`}
+	title={`${name}的美妆主页`}
+	description={`美妆造型、咨询与合作，联系${name}。`}
 	image={avatar}
 >
 	<div class="relative min-h-[100lvh]">
-		<!-- background image -->
+		<!-- 背景图 -->
 		<div class="absolute inset-0">
 			<Image
 				src={background}
 				alt="background"
-				widths={[128, 256, 512, 768, 1024, 1280, 1536, 1920]}
+				widths={[256, 512, 768, 1024, 1280, 1536, 1920]}
 				sizes={"100vw"}
 				quality="high"
 				aria-hidden="true"
@@ -31,42 +30,91 @@ const { Content } = await render(profile);
 			/>
 		</div>
 
-		<!-- backdrop blur -->
+		<!-- 粉嫩磨砂遮罩 -->
 		<div
 			class:list={[
-				"absolute inset-0 bg-white/80 dark:bg-black/80",
+				"absolute inset-0 bg-[#fbeffb]/90",
 				{
 					"backdrop-blur-lg": blur === "blur",
 				},
 			]}
-		>
-		</div>
+		></div>
 
-		<!-- content -->
 		<section id="profile" class="site-container relative pt-12 text-center md:pt-20">
-			<!-- profile image -->
+			<!-- 头像/品牌logo -->
 			<div class="mx-auto flex justify-center">
-				<figure class="">
+				<figure>
 					<Image
 						src={avatar}
-						alt={`${name}'s avatar`}
+						alt={`${name}头像`}
 						width={128}
 						densities={[1.5, 2]}
 						quality="high"
 						loading="eager"
-						class="aspect-square max-w-28 rounded-full object-cover"
+						class="aspect-square max-w-28 rounded-full object-cover border-4 border-[#f8cddf] shadow-md"
 					/>
 				</figure>
 			</div>
 
-			<h1 class="mt-4 text-xl sm:text-3xl">{name}</h1>
+			<h1 class="mt-4 text-2xl font-bold text-[#c55aa2] sm:text-3xl">{name}</h1>
 
-			<div class="markdown-content mt-2 text-sm leading-snug text-pretty sm:text-base">
+			<div class="markdown-content mt-2 text-base text-[#7c4473] leading-snug sm:text-lg">
 				<Content />
 			</div>
 		</section>
 
-		<Socials />
-		<Links />
+		<!-- 社交/链接卡片区 -->
+		<div class="mt-6 flex flex-col gap-6 items-center max-w-xl mx-auto w-full">
+			<Socials />
+			<Links />
+		</div>
 	</div>
+	<style>
+		:root {
+			--main-pink: #c55aa2;
+			--main-bg: #fbeffb;
+			--main-dark: #7c4473;
+			--card-bg: #fff;
+			--card-shadow: 0 4px 24px 0 #c55aa22a;
+			--card-hover-shadow: 0 6px 32px 0 #c55aa244;
+		}
+		.site-container {
+			max-width: 500px;
+			margin-left: auto;
+			margin-right: auto;
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+		.card, .link-card {
+			background: var(--card-bg);
+			border-radius: 20px;
+			box-shadow: var(--card-shadow);
+			padding: 26px 22px 18px 22px;
+			transition: box-shadow 0.18s, transform 0.12s;
+			cursor: pointer;
+			border: none;
+			margin-bottom: 0;
+		}
+		.card:active, .link-card:active, .card:hover, .link-card:hover {
+			box-shadow: var(--card-hover-shadow);
+			transform: scale(0.98);
+		}
+		.card h2, .link-card h2 {
+			margin: 0 0 6px 0;
+			font-size: 1.17em;
+			color: var(--main-pink);
+			font-weight: 600;
+		}
+		.card p, .link-card p {
+			margin: 0;
+			color: var(--main-dark);
+			font-size: 1em;
+			opacity: 0.93;
+		}
+		@media (max-width: 600px) {
+			.site-container { max-width: 97vw; }
+			h1 { font-size: 1.3rem; }
+		}
+	</style>
+</BaseLayout>
 </BaseLayout>
